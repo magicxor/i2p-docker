@@ -56,4 +56,5 @@ RUN sed -i 's/127\.0\.0\.1/0.0.0.0/g' ${I2P_DIR}/i2ptunnel.config && \
 
 VOLUME /var/lib/i2p
 USER i2psvc
+
 ENTRYPOINT ["/usr/bin/i2prouter"]
