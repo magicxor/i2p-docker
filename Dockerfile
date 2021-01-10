@@ -54,7 +54,10 @@ RUN sed -i 's/127\.0\.0\.1/0.0.0.0/g' ${I2P_DIR}/i2ptunnel.config && \
     printf "i2np.udp.ipv6=false\n" >> ${I2P_DIR}/router.config && \
     printf "i2np.upnp.enable=false\n" >> ${I2P_DIR}/router.config
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chown i2psvc /entrypoint.sh && \
+    chmod +x /entrypoint.sh
+
 VOLUME /var/lib/i2p
 USER i2psvc
-COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT '/entrypoint.sh'
